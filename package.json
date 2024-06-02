@@ -1,0 +1,21 @@
+{
+  "name": "interactive-cli-leetcode-solutions",
+  "version": "1.0.0",
+  "description": "An interactive cli for leetcode solutions preview",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "Christian Olo",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.13.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.4.5"
+  }
+}

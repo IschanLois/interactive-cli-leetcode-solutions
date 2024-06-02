@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {   
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*", "foo.ts"],
+  "exclude": ["**/*.spec.ts"]
+}
