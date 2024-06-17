@@ -2,6 +2,7 @@
 
 ## Tasks
 [x] Setup tsc \
+[x] Setup eslint \
+[] Setup prettier \
 [] Setup jest \
-[] Setup eslint \
 [] Get Data
