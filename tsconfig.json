@@ -5,6 +5,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "noImplicitAny": true,
     "types": ["node"]
   },
   "exclude": ["node_modules", "dist", "build"],

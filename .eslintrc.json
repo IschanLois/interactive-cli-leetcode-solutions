@@ -4,9 +4,6 @@
       "node": true,
       "es2022": true
   },
-  "plugins": [
-    "import"
-  ],
   "extends": [
     "eslint:recommended",
     "airbnb-base",
