@@ -6,8 +6,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
-    "types": ["node"]
+    "declaration": true,
+    "types": ["node", "jest"]
   },
   "exclude": ["node_modules", "dist", "build"],
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts"]
 }

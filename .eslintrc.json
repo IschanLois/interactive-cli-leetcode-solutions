@@ -11,6 +11,14 @@
     "airbnb-typescript/base"
   ],
   "ignorePatterns": ["dist/**/*"],
+  "overrides": [
+    {
+      "files": ["src/**/*.spec.ts"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
   "rules": {
     "@typescript-eslint/semi": ["error", "never"],
     "@typescript-eslint/no-explicit-any": "error"

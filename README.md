@@ -5,5 +5,5 @@
 [x] Setup tsc \
 [x] Setup eslint \
 [x] Setup prettier \
-[] Setup jest \
+[x] Setup jest \
 [] Get Data
