@@ -13,7 +13,7 @@
   "ignorePatterns": ["dist/**/*"],
   "overrides": [
     {
-      "files": ["src/**/*.spec.ts"],
+      "files": ["test/**/*.spec.ts"],
       "env": {
         "jest": true
       }
@@ -21,7 +21,8 @@
   ],
   "rules": {
     "@typescript-eslint/semi": ["error", "never"],
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-console": "off"
   },
   "parserOptions": {
     "ecmaVersion": "latest",
