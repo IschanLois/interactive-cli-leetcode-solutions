@@ -5,7 +5,7 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
-  preset: "ts-jest"
+  preset: "ts-jest",
 };
 
 export default config;
