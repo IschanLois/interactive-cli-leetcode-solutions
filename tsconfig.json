@@ -11,5 +11,5 @@
     "types": ["node", "jest", "inquirer"]
   },
   "exclude": ["node_modules", "dist", "build"],
-  "include": ["src/**/*.ts", "test/**/*.spec.ts"]
+  "include": ["src/**/*.ts"]
 }

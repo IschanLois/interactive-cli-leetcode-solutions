@@ -1,25 +1,33 @@
 import inquirer from 'inquirer'
 
 import printWelcome from './utils/printWelcome.js'
+import solutionPrompt from './utils/solutionPrompt.js'
 
 printWelcome()
+
+process.on('exit', () => console.log('Bye!'))
 
 inquirer
   .prompt([
     {
       type: 'list',
-      name: 'foo',
-      message: 'hi there',
-      choices: ['taena ka', 'bubu'],
+      name: 'action',
+      message: 'What do you want to do?',
+      choices: ['continue', 'exit'],
     },
   ])
-  .then((answers) => {
-    console.log(answers.foo)
+  .then(({ action }) => {
+    if (action === 'exit') {
+      return
+    }
+
+    console.clear()
+    solutionPrompt()
   })
   .catch((error) => {
     if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
+      console.error(new Error('Unsupported Environment'))
     } else {
-      // Something else went wrong
+      console.error(error)
     }
   })
