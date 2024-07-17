@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import printWelcome from '../../src/utils/printWelcome'
 
 describe('printWelcome', (): void => {
