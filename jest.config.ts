@@ -1,15 +1,15 @@
-import type {Config} from 'jest';
+import type { Config } from 'jest'
 
 const config: Config = {
   clearMocks: true,
   collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
-  preset: "ts-jest/presets/default-esm",
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
+  preset: 'ts-jest/presets/default-esm',
   transform: {
-   "^.+\\.[tj]sx?$": ["ts-jest", { useESM: true }],
+    '^.+\\.[tj]sx?$': ['ts-jest', { useESM: true }],
   },
-  testPathIgnorePatterns: ["./dist"]
-};
+  testPathIgnorePatterns: ['./dist'],
+}
 
-export default config;
+export default config
