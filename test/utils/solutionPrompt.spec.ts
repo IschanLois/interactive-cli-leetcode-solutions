@@ -13,11 +13,20 @@ describe('solutionPrompt', () => {
   it('should call the inquirer prompt', (): void => {
     spy.mockResolvedValue({})
     solutionPrompt()
+
     expect(inquirer.prompt).toHaveBeenCalledWith([{
       type: expect.any(String),
       name: expect.any(String),
       message: expect.any(String),
       choices: expect.any(Array<String>),
     }])
+  })
+
+  it('should exit the process when exit is chosen', async (): Promise<void> => {
+    const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => undefined as never)
+    spy.mockResolvedValue({ category: 'exit' })
+    await solutionPrompt()
+
+    expect(mockExit).toHaveBeenCalledWith(0)
   })
 })

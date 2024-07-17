@@ -16,13 +16,13 @@ inquirer
       choices: ['continue', 'exit'],
     },
   ])
-  .then(({ action }) => {
+  .then(async ({ action }) => {
     if (action === 'exit') {
       return
     }
 
     console.clear()
-    solutionPrompt()
+    await solutionPrompt()
   })
   .catch((error) => {
     if (error.isTtyError) {

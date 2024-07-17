@@ -1,17 +1,21 @@
 import inquirer from 'inquirer'
 
-export default (): void => {
-  inquirer
+export default async (): Promise<void> => {
+  await inquirer
     .prompt([
       {
         type: 'list',
         name: 'category',
         message: 'Select a category',
-        choices: ['Tree', 'DFS', 'BFS'],
+        choices: ['Tree', 'DFS', 'BFS', 'exit'],
       },
     ])
-    .then(() => {
-      console.log('Solutions...')
+    .then(({ category }) => {
+      if (category === 'exit') {
+        process.exit(0)
+      }
+
+      // console.log('Solutions...')
     })
     .catch((error) => {
       if (error.isTtyError) {
