@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals'
 import inquirer from 'inquirer'
 
-import solutionPrompt from '../src/solutionPrompt'
+import solutionPrompt from './solutionPrompt'
 
 describe('solutionPrompt', () => {
   let spy: jest.Spied<typeof inquirer.prompt>

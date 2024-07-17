@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals'
-import printWelcome from '../src/printWelcome'
+import printWelcome from './printWelcome'
 
 describe('printWelcome', (): void => {
   it('should print welcome message', (): void => {
