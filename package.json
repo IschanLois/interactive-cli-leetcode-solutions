@@ -8,7 +8,7 @@
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "build": "tsc",
     "lint": "eslint .",
-    "start": "npm run build && node dist/index"
+    "start": "npm run build && node dist/src/index"
   },
   "keywords": [
     "leetcode"
@@ -16,6 +16,7 @@
   "author": "Christian Olo",
   "license": "ISC",
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.2",
     "@typescript-eslint/eslint-plugin": "^7.13.0",

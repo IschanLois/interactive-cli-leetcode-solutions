@@ -5,7 +5,11 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
-  preset: "ts-jest",
+  preset: "ts-jest/presets/default-esm",
+  transform: {
+   "^.+\\.[tj]sx?$": ["ts-jest", { useESM: true }],
+  },
+  testPathIgnorePatterns: ["./dist"]
 };
 
 export default config;
