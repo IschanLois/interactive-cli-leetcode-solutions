@@ -1,17 +1,17 @@
 {
-  "Array": [
-    "1_two_sum.cpp"
-  ],
-  "Hash Table": [
-    "1_two_sum.cpp"
-  ],
   "Linked List": [
-    "2_add_two_numbers.cpp"
+    "Add Two Numbers"
   ],
   "Math": [
-    "2_add_two_numbers.cpp"
+    "Add Two Numbers"
   ],
   "Recursion": [
-    "2_add_two_numbers.cpp"
+    "Add Two Numbers"
+  ],
+  "Array": [
+    "Two Sum"
+  ],
+  "Hash Table": [
+    "Two Sum"
   ]
 }
