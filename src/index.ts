@@ -1,7 +1,7 @@
 import inquirer from 'inquirer'
 
 import printWelcome from './printWelcome.js'
-import solutionPrompt from './solutionPrompt.js'
+import solutionPrompt from './problemPrompt.js'
 
 printWelcome()
 

@@ -1,13 +1,18 @@
 import inquirer from 'inquirer'
 
+import getProblems from './utils/getProblems.js'
+import { Problems } from './types.js'
+
 export default async (): Promise<void> => {
+  const problems: Problems = getProblems()
+
   await inquirer
     .prompt([
       {
         type: 'list',
         name: 'category',
         message: 'Select a category',
-        choices: ['Tree', 'DFS', 'BFS', 'exit'],
+        choices: Object.keys(problems),
       },
     ])
     .then(({ category }) => {
@@ -15,7 +20,7 @@ export default async (): Promise<void> => {
         process.exit(0)
       }
 
-      // console.log('Solutions...')
+      console.log(category)
     })
     .catch((error) => {
       if (error.isTtyError) {
