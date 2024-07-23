@@ -8,7 +8,8 @@
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "build": "tsc",
     "lint": "eslint .",
-    "start": "npm run build && node dist/src/index"
+    "start": "npm run build && node dist/src/index",
+    "seed": "npm run build && node dist/seed/index"
   },
   "keywords": [
     "leetcode"
