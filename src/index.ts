@@ -1,14 +1,13 @@
-import inquirer from 'inquirer'
-
+import inquirerWrapper from './utils/inquirerWrapper.js'
 import printWelcome from './printWelcome.js'
-import solutionPrompt from './problemPrompt.js'
-
-printWelcome()
+import problemPrompt from './problemPrompt.js'
 
 process.on('exit', () => console.log('Bye!'))
 
-inquirer
-  .prompt([
+printWelcome()
+
+try {
+  const { action } = await inquirerWrapper([
     {
       type: 'list',
       name: 'action',
@@ -16,18 +15,13 @@ inquirer
       choices: ['continue', 'exit'],
     },
   ])
-  .then(async ({ action }) => {
-    if (action === 'exit') {
-      return
-    }
 
-    console.clear()
-    await solutionPrompt()
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      console.error(new Error('Unsupported Environment'))
-    } else {
-      console.error(error)
-    }
-  })
+  if (action === 'exit') {
+    process.exit(0)
+  }
+
+  await problemPrompt()
+} catch (error) {
+  console.error(error)
+  process.exit(1)
+}
