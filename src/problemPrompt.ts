@@ -1,8 +1,9 @@
+import { Problems } from './types.js'
+import showProblem from './showProblem.js'
 import inquirerWrapper from './utils/inquirerWrapper.js'
 import getProblems from './utils/getProblems.js'
-import { Problems } from './types.js'
 
-export default async (): Promise<void> => {
+const problemPrompt = async (): Promise<void> => {
   const problems: Problems = getProblems()
 
   const { category } = await inquirerWrapper([
@@ -10,11 +11,29 @@ export default async (): Promise<void> => {
       type: 'list',
       name: 'category',
       message: 'Select a category',
-      choices: Object.keys(problems),
+      choices: [...Object.keys(problems), 'exit'],
     },
   ])
 
   if (category === 'exit') {
     process.exit(0)
   }
+
+  const { problem } = await inquirerWrapper([
+    {
+      type: 'list',
+      name: 'problem',
+      message: 'Select a problem',
+      choices: [...problems[category], 'back'],
+    },
+  ])
+
+  if (problem === 'back') {
+    console.clear()
+    problemPrompt()
+  }
+
+  showProblem(problem)
 }
+
+export default problemPrompt

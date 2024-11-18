@@ -20,6 +20,7 @@ try {
     process.exit(0)
   }
 
+  console.clear()
   await problemPrompt()
 } catch (error) {
   console.error(error)
