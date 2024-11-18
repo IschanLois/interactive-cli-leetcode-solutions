@@ -1,5 +1,4 @@
 import inquirerWrapper from './utils/inquirerWrapper.js'
-
 import getProblems from './utils/getProblems.js'
 import { Problems } from './types.js'
 
