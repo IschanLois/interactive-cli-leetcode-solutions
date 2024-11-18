@@ -10,10 +10,10 @@
     "airbnb-base",
     "airbnb-typescript/base"
   ],
-  "ignorePatterns": ["dist/**/*"],
+  "ignorePatterns": ["dist/**/*", "__mock__"],
   "overrides": [
     {
-      "files": ["test/**/*.spec.ts"],
+      "files": ["src/**/*.spec.ts", "seed/**/*.spec.ts"],
       "env": {
         "jest": true
       }

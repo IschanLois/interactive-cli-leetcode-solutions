@@ -6,6 +6,9 @@ const config: Config = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   preset: 'ts-jest/presets/default-esm',
+  moduleNameMapper: {
+    '(.+)\\.js': '$1',
+  },
   transform: {
     '^.+\\.[tj]sx?$': ['ts-jest', { useESM: true }],
   },

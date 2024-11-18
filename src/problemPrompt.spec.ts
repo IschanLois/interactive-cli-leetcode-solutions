@@ -1,18 +1,22 @@
 import { jest } from '@jest/globals'
 import inquirer from 'inquirer'
 
-import solutionPrompt from './problemPrompt'
+import problemPrompt from './problemPrompt'
 
-describe('solutionPrompt', () => {
+describe('problemPrompt', () => {
   let spy: jest.Spied<typeof inquirer.prompt>
 
   beforeEach((): void => {
     spy = jest.spyOn(inquirer, 'prompt')
   })
 
+  afterEach((): void => {
+    jest.resetAllMocks()
+  })
+
   it('should call the inquirer prompt', (): void => {
     spy.mockResolvedValue({})
-    solutionPrompt()
+    problemPrompt()
 
     expect(inquirer.prompt).toHaveBeenCalledWith([{
       type: expect.any(String),
@@ -25,8 +29,16 @@ describe('solutionPrompt', () => {
   it('should exit the process when exit is chosen', async (): Promise<void> => {
     const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => undefined as never)
     spy.mockResolvedValue({ category: 'exit' })
-    await solutionPrompt()
+    await problemPrompt()
 
     expect(mockExit).toHaveBeenCalledWith(0)
+  })
+
+  it('should handle miscellaneous errors', async (): Promise<void> => {
+    const consoleErrorMock = jest.spyOn(console, 'error')
+    spy.mockRejectedValue(new Error())
+    await problemPrompt()
+
+    expect(consoleErrorMock).toHaveBeenCalled()
   })
 })
