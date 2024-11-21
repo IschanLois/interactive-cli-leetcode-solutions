@@ -13,7 +13,8 @@
   ],
   "String": [
     "Longest Palindromic Substring",
-    "Longest Substring Without Repeating Characters"
+    "Longest Substring Without Repeating Characters",
+    "ZigZag Conversion"
   ],
   "Dynamic Programming": [
     "Longest Palindromic Substring"
