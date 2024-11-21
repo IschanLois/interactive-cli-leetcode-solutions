@@ -1,4 +1,3 @@
-import { jest } from '@jest/globals'
 import printWelcome from './printWelcome'
 
 describe('printWelcome', (): void => {

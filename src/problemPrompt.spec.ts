@@ -1,52 +1,56 @@
-import { jest } from '@jest/globals'
-
-import inquirer from 'inquirer'
-
 import problemPrompt from './problemPrompt'
-import * as getProblems from './utils/getProblems'
+import getProblems from './utils/getProblems'
+import showProblem from './showProblem'
+import inquirerWrapper from './utils/inquirerWrapper'
 
-jest.unstable_mockModule('./utils/getProblems', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}))
+jest.mock('./utils/getProblems', () => jest.fn())
+
+jest.mock('./showProblem', () => jest.fn())
+
+jest.mock('./utils/inquirerWrapper', () => jest.fn())
 
 describe('problemPrompt', () => {
-  let spy: jest.Spied<typeof inquirer.prompt>
-
-  beforeEach((): void => {
-    spy = jest.spyOn(inquirer, 'prompt')
-  })
+  const getProblemsMock = getProblems as jest.Mock
+  const inquirerWrapperMock = inquirerWrapper as jest.Mock
+  const category: string = 'category'
+  const problems: string[] = ['problem']
 
   afterEach((): void => {
     jest.resetAllMocks()
   })
 
-  it('should call the inquirer prompt', (): void => {
-    (getProblems.default as jest.Mock).mockReturnValue({})
-    // spy.mockResolvedValue({})
-    // problemPrompt()
+  it('should pick the right problem', async (): Promise<void> => {
+    getProblemsMock.mockReturnValue({ category: problems })
+    inquirerWrapperMock.mockResolvedValueOnce({ category })
+    inquirerWrapperMock.mockResolvedValueOnce({ problem: problems[0] })
 
-    // expect(inquirer.prompt).toHaveBeenCalledWith([{
-    //   type: expect.any(String),
-    //   name: expect.any(String),
-    //   message: expect.any(String),
-    //   choices: expect.any(Array<String>),
-    // }])
+    await problemPrompt()
+
+    expect(showProblem).toHaveBeenCalledWith(problems[0])
   })
 
-  // it('should exit the process when exit is chosen', async (): Promise<void> => {
-  //   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => undefined as never)
-  //   spy.mockResolvedValue({ category: 'exit' })
-  //   await problemPrompt()
+  it('should exit when "exit" is selected', async (): Promise<void> => {
+    getProblemsMock.mockReturnValue({ category: [...problems, 'exit'] })
+    inquirerWrapperMock.mockResolvedValueOnce({ category: 'exit' })
 
-  //   expect(mockExit).toHaveBeenCalledWith(0)
-  // })
+    await problemPrompt()
 
-  // it('should handle miscellaneous errors', async (): Promise<void> => {
-  //   const consoleErrorMock = jest.spyOn(console, 'error')
-  //   spy.mockRejectedValue(new Error())
-  //   await problemPrompt()
+    expect(showProblem).not.toHaveBeenCalled()
+  })
 
-  //   expect(consoleErrorMock).toHaveBeenCalled()
-  // })
+  it('should go back to recursively select problem when "back" is selected', async (): Promise<void> => {
+    const consoleClearMock = jest.spyOn(console, 'clear').mockImplementation(() => {})
+    getProblemsMock.mockReturnValue({ category: [...problems] })
+
+    inquirerWrapperMock.mockResolvedValueOnce({ category })
+    inquirerWrapperMock.mockResolvedValueOnce({ problem: 'back' })
+    inquirerWrapperMock.mockResolvedValueOnce({ category })
+    inquirerWrapperMock.mockResolvedValueOnce({ problem: problems[0] })
+
+    await problemPrompt()
+
+    expect(consoleClearMock).toHaveBeenCalledTimes(1)
+    expect(showProblem).toHaveBeenCalledTimes(1)
+    expect(showProblem).toHaveBeenCalledWith(problems[0])
+  })
 })

@@ -10,7 +10,6 @@ export default async (): Promise<void> => {
     const metadataDir = join(rootDir, '/assets/metadata')
 
     const directory: string[] = await readdir(metadataDir, { encoding: 'utf8' })
-    console.log(directory)
     const contents: string[] = await Promise.all(
       directory.map((file: string) => readFile(join(metadataDir, file), { encoding: 'utf8' })),
     )

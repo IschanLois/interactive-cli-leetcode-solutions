@@ -1,5 +1,4 @@
 import { jest } from '@jest/globals'
-import { Dirent } from 'fs'
 import * as fs from 'fs/promises'
 
 import { Metadata } from './types'
@@ -17,9 +16,9 @@ describe.only('seed', (): void => {
   })
 
   it('should group the files according to topics in categories.json', async (): Promise<void> => {
-    const readdirMock = jest.spyOn(fs, 'readdir')
-    const readFileMock = jest.spyOn(fs, 'readFile')
-    const writeFileMock = jest.spyOn(fs, 'writeFile')
+    const readdirMock = fs.readdir as jest.Mock
+    const readFileMock = fs.readFile as jest.Mock
+    const writeFileMock = fs.writeFile as jest.Mock
 
     const metadata: Metadata[] = [
       {
@@ -54,13 +53,13 @@ describe.only('seed', (): void => {
       'Topic 5': ['Problem 3'],
     }
 
-    readdirMock.mockResolvedValue(['file1.json', 'file2.json', 'file3.json'] as unknown as Dirent[])
+    readdirMock.mockResolvedValue(['file1.json', 'file2.json', 'file3.json'] as never)
 
-    readFileMock.mockResolvedValueOnce(JSON.stringify(metadata[0]))
-    readFileMock.mockResolvedValueOnce(JSON.stringify(metadata[1]))
-    readFileMock.mockResolvedValueOnce(JSON.stringify(metadata[2]))
+    readFileMock.mockResolvedValueOnce(JSON.stringify(metadata[0]) as never)
+    readFileMock.mockResolvedValueOnce(JSON.stringify(metadata[1]) as never)
+    readFileMock.mockResolvedValueOnce(JSON.stringify(metadata[2]) as never)
 
-    writeFileMock.mockResolvedValue(undefined)
+    writeFileMock.mockResolvedValue(undefined as never)
 
     await seed()
 
@@ -73,9 +72,10 @@ describe.only('seed', (): void => {
     const readdirMock = jest.spyOn(fs, 'readdir')
 
     readdirMock.mockRejectedValue(new Error('Failed to read directory'))
+    consoleErrorMock.mockImplementation(() => ({}))
 
     await seed()
 
-    expect(consoleErrorMock).toHaveBeenCalled()
+    expect(consoleErrorMock).toHaveBeenCalledWith(new Error('Failed to read directory'))
   })
 })

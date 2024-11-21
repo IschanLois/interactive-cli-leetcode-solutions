@@ -16,7 +16,7 @@ const problemPrompt = async (): Promise<void> => {
   ])
 
   if (category === 'exit') {
-    process.exit(0)
+    return
   }
 
   const { problem } = await inquirerWrapper([
@@ -28,12 +28,13 @@ const problemPrompt = async (): Promise<void> => {
     },
   ])
 
-  if (problem === 'back') {
-    console.clear()
-    problemPrompt()
+  if (problem !== 'back') {
+    showProblem(problem)
+    return
   }
 
-  showProblem(problem)
+  console.clear()
+  await problemPrompt()
 }
 
 export default problemPrompt
