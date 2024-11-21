@@ -10,7 +10,7 @@
     "airbnb-base",
     "airbnb-typescript/base"
   ],
-  "ignorePatterns": ["dist/**/*", "./*.js"],
+  "ignorePatterns": ["dist/**/*", "*.js"],
   "overrides": [
     {
       "files": ["src/**/*.spec.ts", "seed/**/*.spec.ts"],

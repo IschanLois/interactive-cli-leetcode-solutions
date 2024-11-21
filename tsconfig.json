@@ -11,6 +11,14 @@
     "noEmitOnError": true,
     "types": ["node", "jest", "inquirer"]
   },
-  "exclude": ["node_modules", "dist", "build", "./*.js"],
-  "include": ["seed/**/*.ts", "src/**/*.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "./*.js",
+  ],
+  "include": [
+    "seed/**/*.ts",
+    "src/**/*.ts"
+  ]
 }
