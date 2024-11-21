@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import fs from 'fs/promises'
+import { readdir, readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 
 import { Categories, Metadata } from './types'
@@ -9,13 +9,11 @@ export default async (): Promise<void> => {
     const rootDir: string = execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim()
     const metadataDir = join(rootDir, '/assets/metadata')
 
-    const directory: string[] = await fs.readdir(metadataDir, { encoding: 'utf8' })
+    const directory: string[] = await readdir(metadataDir, { encoding: 'utf8' })
     console.log(directory)
     const contents: string[] = await Promise.all(
-      directory.map((file: string) => fs.readFile(join(metadataDir, file), { encoding: 'utf8' })),
+      directory.map((file: string) => readFile(join(metadataDir, file), { encoding: 'utf8' })),
     )
-
-    console.log(directory)
 
     const categories: Categories = contents
       .reduce((prev: Categories, data: string): Categories => {
@@ -33,7 +31,7 @@ export default async (): Promise<void> => {
         return prev
       }, {})
 
-    await fs.writeFile(
+    await writeFile(
       join(rootDir, '/assets/categories.json'),
       JSON.stringify(categories, undefined, 2),
     )

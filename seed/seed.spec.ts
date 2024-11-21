@@ -1,11 +1,17 @@
 import { jest } from '@jest/globals'
 import { Dirent } from 'fs'
-import fs from 'fs/promises'
+import * as fs from 'fs/promises'
 
 import { Metadata } from './types'
 import seed from './seed'
 
-describe('seed', (): void => {
+jest.mock('fs/promises', () => ({
+  readdir: jest.fn(),
+  readFile: jest.fn(),
+  writeFile: jest.fn(),
+}))
+
+describe.only('seed', (): void => {
   beforeEach(() => {
     jest.resetAllMocks()
   })

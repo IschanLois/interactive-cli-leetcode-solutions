@@ -2,7 +2,7 @@
   "root": true,
   "env": {
     "node": true,
-    "es2022": true
+    "commonjs": true
   },
   "extends": [
     "eslint:recommended",
@@ -10,7 +10,7 @@
     "airbnb-base",
     "airbnb-typescript/base"
   ],
-  "ignorePatterns": ["dist/**/*", "__mock__"],
+  "ignorePatterns": ["dist/**/*", "./*.js"],
   "overrides": [
     {
       "files": ["src/**/*.spec.ts", "seed/**/*.spec.ts"],
