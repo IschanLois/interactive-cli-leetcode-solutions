@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import { execSync } from 'child_process'
 
 import buildAssetsPath from './utils/buildAssetsPath.js'
 
@@ -6,9 +6,8 @@ const showProblem = (problem: string) => {
   const codePath: string = buildAssetsPath(
     `code/${problem.toLowerCase().replaceAll(' ', '-')}.cpp`,
   )
-  const code: string = readFileSync(codePath, { encoding: 'utf-8' })
 
-  console.log(code)
+  execSync(`less ${codePath}`, { stdio: 'inherit' })
 }
 
 export default showProblem

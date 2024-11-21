@@ -39,7 +39,7 @@ describe('problemPrompt', () => {
   })
 
   it('should go back to recursively select problem when "back" is selected', async (): Promise<void> => {
-    const consoleClearMock = jest.spyOn(console, 'clear').mockImplementation(() => {})
+    console.clear = jest.fn()
     getProblemsMock.mockReturnValue({ category: [...problems] })
 
     inquirerWrapperMock.mockResolvedValueOnce({ category })
@@ -49,7 +49,7 @@ describe('problemPrompt', () => {
 
     await problemPrompt()
 
-    expect(consoleClearMock).toHaveBeenCalledTimes(1)
+    expect(console.clear).toHaveBeenCalledTimes(1)
     expect(showProblem).toHaveBeenCalledTimes(1)
     expect(showProblem).toHaveBeenCalledWith(problems[0])
   })
