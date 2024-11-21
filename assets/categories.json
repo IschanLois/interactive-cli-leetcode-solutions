@@ -6,7 +6,8 @@
     "Add Two Numbers",
     "Integer to Roman",
     "Palindrome Number",
-    "Reverse Integer"
+    "Reverse Integer",
+    "Roman to Integer"
   ],
   "Recursion": [
     "Add Two Numbers"
@@ -25,12 +26,14 @@
   "Hash Table": [
     "Integer to Roman",
     "Longest Substring Without Repeating Characters",
+    "Roman to Integer",
     "Two Sum"
   ],
   "String": [
     "Integer to Roman",
     "Longest Palindromic Substring",
     "Longest Substring Without Repeating Characters",
+    "Roman to Integer",
     "ZigZag Conversion"
   ],
   "Dynamic Programming": [
