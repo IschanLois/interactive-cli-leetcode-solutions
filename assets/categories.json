@@ -8,10 +8,24 @@
   "Recursion": [
     "Add Two Numbers"
   ],
-  "Array": [
-    "Two Sum"
+  "Two Pointers": [
+    "Longest Palindromic Substring"
+  ],
+  "String": [
+    "Longest Palindromic Substring",
+    "Longest Substring Without Repeating Characters"
+  ],
+  "Dynamic Programming": [
+    "Longest Palindromic Substring"
   ],
   "Hash Table": [
+    "Longest Substring Without Repeating Characters",
+    "Two Sum"
+  ],
+  "Sliding Window": [
+    "Longest Substring Without Repeating Characters"
+  ],
+  "Array": [
     "Two Sum"
   ]
 }
