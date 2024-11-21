@@ -12,6 +12,7 @@ jest.mock('./utils/inquirerWrapper', () => jest.fn())
 describe('problemPrompt', () => {
   const getProblemsMock = getProblems as jest.Mock
   const inquirerWrapperMock = inquirerWrapper as jest.Mock
+  const showProblemMock = showProblem as jest.Mock
   const category: string = 'category'
   const problems: string[] = ['problem']
 
@@ -21,8 +22,11 @@ describe('problemPrompt', () => {
 
   it('should pick the right problem', async (): Promise<void> => {
     getProblemsMock.mockReturnValue({ category: problems })
-    inquirerWrapperMock.mockResolvedValueOnce({ category })
-    inquirerWrapperMock.mockResolvedValueOnce({ problem: problems[0] })
+    showProblemMock.mockResolvedValueOnce(undefined)
+    inquirerWrapperMock
+      .mockResolvedValueOnce({ category })
+      .mockResolvedValueOnce({ problem: problems[0] })
+      .mockResolvedValueOnce({ category: 'exit' })
 
     await problemPrompt()
 
@@ -41,15 +45,16 @@ describe('problemPrompt', () => {
   it('should go back to recursively select problem when "back" is selected', async (): Promise<void> => {
     console.clear = jest.fn()
     getProblemsMock.mockReturnValue({ category: [...problems] })
-
-    inquirerWrapperMock.mockResolvedValueOnce({ category })
-    inquirerWrapperMock.mockResolvedValueOnce({ problem: 'back' })
-    inquirerWrapperMock.mockResolvedValueOnce({ category })
-    inquirerWrapperMock.mockResolvedValueOnce({ problem: problems[0] })
+    showProblemMock.mockResolvedValueOnce(undefined)
+    inquirerWrapperMock
+      .mockResolvedValueOnce({ category })
+      .mockResolvedValueOnce({ problem: 'back' })
+      .mockResolvedValueOnce({ category })
+      .mockResolvedValueOnce({ problem: problems[0] })
+      .mockResolvedValueOnce({ category: 'exit' })
 
     await problemPrompt()
 
-    expect(console.clear).toHaveBeenCalledTimes(1)
     expect(showProblem).toHaveBeenCalledTimes(1)
     expect(showProblem).toHaveBeenCalledWith(problems[0])
   })

@@ -30,7 +30,6 @@ const problemPrompt = async (): Promise<void> => {
 
   if (problem !== 'back') {
     showProblem(problem)
-    return
   }
 
   console.clear()
