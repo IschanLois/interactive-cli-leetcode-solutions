@@ -3,15 +3,32 @@
     "Add Two Numbers"
   ],
   "Math": [
-    "Add Two Numbers"
+    "Add Two Numbers",
+    "Integer to Roman",
+    "Palindrome Number",
+    "Reverse Integer"
   ],
   "Recursion": [
     "Add Two Numbers"
   ],
+  "Array": [
+    "Container With Most Water",
+    "Two Sum"
+  ],
   "Two Pointers": [
+    "Container With Most Water",
     "Longest Palindromic Substring"
   ],
+  "Greedy": [
+    "Container With Most Water"
+  ],
+  "Hash Table": [
+    "Integer to Roman",
+    "Longest Substring Without Repeating Characters",
+    "Two Sum"
+  ],
   "String": [
+    "Integer to Roman",
     "Longest Palindromic Substring",
     "Longest Substring Without Repeating Characters",
     "ZigZag Conversion"
@@ -19,14 +36,7 @@
   "Dynamic Programming": [
     "Longest Palindromic Substring"
   ],
-  "Hash Table": [
-    "Longest Substring Without Repeating Characters",
-    "Two Sum"
-  ],
   "Sliding Window": [
     "Longest Substring Without Repeating Characters"
-  ],
-  "Array": [
-    "Two Sum"
   ]
 }
