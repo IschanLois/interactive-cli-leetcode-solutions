@@ -1,0 +1,7 @@
+/coverage
+/seed
+/src
+/*.json
+/*.js
+.prettier*
+/dist/seed
