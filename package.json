@@ -1,8 +1,9 @@
 {
   "name": "interactive-cli-leetcode-solutions",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An interactive cli for leetcode solutions preview",
   "main": "index.js",
+  "repository": "https://github.com/IschanLois/interactive-cli-leetcode-solutions.git",
   "scripts": {
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "build": "tsc",
@@ -11,8 +12,12 @@
     "seed": "npm run build && node dist/seed/index"
   },
   "keywords": [
-    "leetcode"
+    "leetcode",
+    "leetcode-solutions",
+    "interactive-cli-leetcode",
+    "interactive-cli-leetcode-solutions"
   ],
+  "bin": "dist/src/index.js",
   "author": "Christian Olo",
   "license": "ISC",
   "devDependencies": {

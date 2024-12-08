@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import inquirerWrapper from './utils/inquirerWrapper.js'
 import printWelcome from './printWelcome.js'
 import problemPrompt from './problemPrompt.js'

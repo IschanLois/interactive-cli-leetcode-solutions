@@ -5,11 +5,11 @@ import buildAssetsPath from './utils/buildAssetsPath.js'
 import { Platform } from './types.js'
 
 const showProblem = (problem: string) => {
-  const codePath: string = buildAssetsPath(
-    `code/${problem.toLowerCase().replaceAll(' ', '-')}.cpp`,
-  )
-
   try {
+    const codePath: string = buildAssetsPath(
+      `code/${problem.toLowerCase().replaceAll(' ', '-')}.cpp`,
+    )
+
     switch (process.platform) {
       case Platform.Windows:
         execSync(`more ${codePath}`, { stdio: 'inherit' })

@@ -1,9 +1,5 @@
 # interactive-cli-leetcode-solutions
 
-## Tasks
+C++ (.cpp) based LeetCode problem solutions with an interactive CLI.
 
-[x] Setup tsc \
-[x] Setup eslint \
-[x] Setup prettier \
-[x] Setup jest \
-[] Get Data
+
