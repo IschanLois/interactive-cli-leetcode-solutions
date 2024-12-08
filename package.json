@@ -1,6 +1,6 @@
 {
   "name": "interactive-cli-leetcode-solutions",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "An interactive cli for leetcode solutions preview",
   "main": "index.js",
   "repository": "https://github.com/IschanLois/interactive-cli-leetcode-solutions.git",
@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "@types/inquirer": "^7.3.3",
-    "inquirer": "^8.2.6",
-    "interactive-cli-leetcode-solutions": "^1.3.2"
+    "inquirer": "^8.2.6"
   }
 }
