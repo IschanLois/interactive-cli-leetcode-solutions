@@ -19,7 +19,7 @@
   ],
   "bin": "dist/src/index.js",
   "author": "Christian Olo",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
