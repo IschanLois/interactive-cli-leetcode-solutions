@@ -1,14 +1,14 @@
 {
   "name": "interactive-cli-leetcode-solutions",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "An interactive cli for leetcode solutions preview",
   "main": "index.js",
   "repository": "https://github.com/IschanLois/interactive-cli-leetcode-solutions.git",
   "scripts": {
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
-    "build": "tsc",
+    "build": "tsc && webpack --config webpack.config.js",
     "lint": "eslint .",
-    "start": "npm run build && node dist/src/index",
+    "start": "npm run build && node dist/index",
     "seed": "npm run build && node dist/seed/index"
   },
   "keywords": [
@@ -17,7 +17,7 @@
     "interactive-cli-leetcode",
     "interactive-cli-leetcode-solutions"
   ],
-  "bin": "dist/src/index.js",
+  "bin": "dist/index.js",
   "author": "Christian Olo",
   "license": "MIT",
   "devDependencies": {
@@ -39,7 +39,9 @@
     "prettier": "3.3.2",
     "ts-jest": "^29.1.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "@types/inquirer": "^7.3.3",
