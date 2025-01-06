@@ -4,21 +4,13 @@
     "module": "NodeNext",
     "outDir": "dist",
     "strict": true,
-    "declaration": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
     "moduleResolution": "nodenext",
     "noEmitOnError": true,
     "types": ["node", "jest", "inquirer"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build",
-    "./*.js",
-  ],
   "include": [
-    "seed/**/*.ts",
     "src/**/*.ts"
   ]
 }

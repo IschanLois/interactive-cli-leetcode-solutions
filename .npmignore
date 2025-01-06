@@ -4,5 +4,4 @@
 /*.json
 /*.js
 .prettier*
-/dist/seed
-/dist/src/
+/dist/**/*.spec.js
